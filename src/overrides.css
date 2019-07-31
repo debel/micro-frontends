@@ -1,0 +1,23 @@
+root {
+  --text-color: black;
+}
+
+a {
+  color: var(--text-color) !important;
+  font-style: italic;
+}
+
+ul {
+  text-align: center !important;
+  list-style: none !important;
+}
+
+blockquote>span {
+  color: var(--text-color) !important;
+}
+
+
+.atomic-design-image {
+  margin: 0 auto !important;
+  text-align: center !important;
+}
