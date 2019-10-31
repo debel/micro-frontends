@@ -3,6 +3,7 @@ import React from 'react';
 import {
   BlockQuote,
   Cite,
+  CodePane,
   Deck,
   Heading,
   Image,
@@ -33,17 +34,32 @@ const theme = createTheme(
   }
 );
 
+const dayViewCode = (
+`<Page>
+  <Header /> /*<-- knows if the user is logged in*/
+  <SearchControls /> /*<-- knows where to get autosuggest options*/
+  <Aside left>
+    <Filters /> /*<-- this is a local component*/
+  </Aside>
+  <FlightResults /> /*<-- knows where to get the results from*/
+  <Aside rigth>
+    <Ads /> /*<-- knows what ads to display*/
+  </Aside>
+</Page>
+`);
+
 export default () => (
     <Deck
       transition={['slide']}
       transitionDuration={200}
       theme={theme}
       progress="bar"
+      showFullscreenControl={false}
     >
       <Slide id="title">
         <Image src="images/microsites-logo.png" alt="Micro frontends" />
         <Text fit bold>
-          a journey from the cathedral to the bazaar... and back
+          micro frontend architecture in 15 minutes
         </Text>
         <Text textSize="smaller" textAlign="right">@debelbot</Text>
       </Slide>
@@ -76,41 +92,30 @@ export default () => (
       </Slide>
 
       <Slide id="monolith">
-        <Heading size={4}>2015: The monolith</Heading>
-        <List>
-          <ListItem>C# backend</ListItem>
-          <ListItem>Coffeescript</ListItem>
-          <ListItem>Backbone</ListItem>
-          <ListItem>JQuery</ListItem>
-        </List>
-      </Slide>
-
-      <Slide id="old-front-page">
-        <Heading size={4}>The monolithic home page</Heading>
-        <Image width="50%" src="images/old-homepage.png" />
+        <Image src="images/monolith.jpg" />
       </Slide>
 
       <Slide id="monoliths-2">
         <Image src="images/monolith-frontback.png" />
       </Slide>
 
-      <Slide id="microsites-1">
-        <Heading size={4}>2016: Microsites</Heading>
-        <List>
-          <ListItem>ES6</ListItem>
-          <ListItem>React</ListItem>
-          <ListItem>Express backends</ListItem>
-          <ListItem>Backpack and OC components</ListItem>
-        </List>
-      </Slide>
-
-      <Slide id="blackbird-breakdown">
-        <Heading size={4}>Composing the home page</Heading>
-        <Image width="50%" src="images/blackbird.png" />
+      <Slide id="micro-frontends-1">
+        <Image src="images/micro-frontends-doggy.jpg" />
       </Slide>
 
       <Slide id="micro-frontends-2">
         <Image src="images/microservices-fullstack-verticals.png" />
+      </Slide>
+
+      <Slide id="micro-sites-1">
+        <Image src="images/microsites.png" />
+      </Slide>
+
+      <Slide id="scale-quote">
+        <BlockQuote>
+          <Quote>There is nothing "micro" about a site with a 100M users</Quote>
+          <Cite>Codefucius</Cite>
+        </BlockQuote>
       </Slide>
 
       <Slide id="big-change">
@@ -118,83 +123,16 @@ export default () => (
         <hr />
         <Heading size={2}>A bigger shift in architecture</Heading>
         <hr />
-        <Text italic>500 000 LOC rewritten in less than an year</Text>
+        <Text italic>requires extra tooling and coordination</Text>
       </Slide>
 
-      <Slide id="getting-there">
-        <Heading size={4}>A long and difficult journey</Heading>
-        <Layout>
-          <div style={{ height: '3rem', width: '100%', backgroundColor: 'red' }}>
-            1% of traffic in 12 months
-          </div>
-          <div style={{ width: '50%', height: '9rem', backgroundColor: 'yellow' }}>
-            10% of traffic in 18 months
-          </div>
-          <div style={{ width: '25%', height: '27rem', backgroundColor: 'green' }}>
-            100% of traffic in 24 months
-          </div>
-        </Layout>
-      </Slide>
-
-      <Slide id="atomic_design">
-        <Heading size={4}>Atomic Design</Heading>
-        <List>
-         <ListItem>
-           Methodology for creating design systems
-           <span style={{fontStyle:'italic'}}> (as opposed to ad-hoc collections of web pages)</span>
-         </ListItem>
-         <ListItem>An equal partnership between design and engineering</ListItem>
-        </List>
-      </Slide>
-
-      <Slide id="atomic-design-concepts">
-        <Heading size={4}>Atomic Design: Concepts</Heading>
-        <Layout>
-          <div className="atomic-design-image">
-            <Image src="images/atomic-design-tokens.png" />
-            <span>Tokens</span>
-          </div>
-          <div className="atomic-design-image">
-            <Image src="images/atomic-design-atoms.png" />
-            <span>Atoms</span>
-          </div>
-          <div className="atomic-design-image">
-            <Image src="images/atomic-design-molecules.png" />
-            <span>Molecules</span>
-          </div>
-        </Layout>
-        <Layout>
-          <div className="atomic-design-image">
-            <Image src="images/atomic-design-organisms.png" />
-            <span>Organisms</span>
-          </div>
-          <div className="atomic-design-image">
-            <Image src="images/atomic-design-systems.png" />
-            <span>Systems</span>
-          </div>
-        </Layout>
-      </Slide>
-
-      <Slide id="atomic-design-principles">
-        <Heading size={4}>Atomic Design: Principles</Heading>
-        <List>
-          <ListItem>Composability</ListItem>
-          <ListItem>Reusability</ListItem>
-          <ListItem>Consistency</ListItem>
-          <ListItem>Maintainability</ListItem>
-        </List>
-      </Slide>
-
-      <Slide id="micro-sites-1">
-        <Image src="images/microsites.png" />
-      </Slide>
-
-      <Slide id="the-goods-quote">
-        <Image width="50%" src="images/tweet-best-practices.png" />
+      <Slide id="micro-frontends-architecture">
+        <Heading size={4}>Micro frontends architecture</Heading>
+        <Image src="images/micro-front-ends.jpeg" />
       </Slide>
 
       <Slide id="benefits">
-        <Heading size={4}>Mirco-site benefits</Heading>
+        <Heading size={4}>Mirco frontend benefits</Heading>
         <List>
           <ListItem>Independent development</ListItem>
           <ListItem>Independent deployment</ListItem>
@@ -242,18 +180,15 @@ export default () => (
         <Image src="images/autoscaling.png" />
       </Slide>
 
-      <Slide id="scale-quote">
-        <BlockQuote>
-          <Quote>There is nothing "micro" about a site with a 100M users</Quote>
-          <Cite>Codefucius</Cite>
-        </BlockQuote>
-      </Slide>
-
       <Slide id="independent-failure">
         <Heading size={4}>Independent failure</Heading>
         <Text>
           Compartmentalization: a problem in one page should not cause a problem in another
         </Text>
+      </Slide>
+
+      <Slide id="titanic-little-bug">
+        <Image src="images/titanic.jpg" />
       </Slide>
 
       <Slide id="great-power-great-responsibility">
@@ -264,128 +199,12 @@ export default () => (
         </Text>
       </Slide>
 
-      <Slide id="micro-frontends-architecture">
-        <Heading size={4}>Micro frontends architecture</Heading>
-        <Image src="images/micro-front-ends.jpeg" />
-      </Slide>
-
-      <Slide id="request-handler-1">
-        <Heading size={4}>Micro-sites architecture</Heading>
-        <Image width="66%" src="images/request-handler.png" />
-      </Slide>
-
-      <Slide id="request-handler-2">
-        <Heading size={4}>Request handler</Heading>
-        <List>
-          <ListItem>handles every single request</ListItem>
-          <ListItem>needs to be super fast and reliable</ListItem>
-          <ListItem>top level routing only, no complicated logic</ListItem>
-        </List>
-      </Slide>
-
       <Slide id="tooling">
         <Heading size={4}>Tooling</Heading>
         <List>
-          <ListItem>Bootstrapping</ListItem>
-          <ListItem>Shared libraries</ListItem>
-          <ListItem>Deployment</ListItem>
-          <ListItem>Autoscaling</ListItem>
-        </List>
-      </Slide>
-
-      <Slide id="green-blue-deployment">
-        <Heading size={4}>Green Blue Deployment</Heading>
-        <Image src="images/bluegreen2.png" />
-      </Slide>
-
-      <Slide id="k8s-autoscaling">
-        <Heading size={4}>Autoscaling magic</Heading>
-        <Image src="images/kubernetes.png" />
-      </Slide>
-
-      <Slide id="project-bootstrap">
-        <Heading size={4}>Bootstrapping</Heading>
-        <List>
-          <ListItem>create-react-app + backpack</ListItem>
-          <ListItem>express + OC + SSR</ListItem>
-          <ListItem>CI + CD</ListItem>
-        </List>
-      </Slide>
-
-      <Slide id="project-bootstrap-2">
-        <Heading size={4}>Bootstrapping</Heading>
-        <List>
-          <ListItem>Fast prototyping</ListItem>
-          <ListItem>Production ready out of the box</ListItem>
-          <ListItem>Common structure and best practices</ListItem>
-        </List>
-      </Slide>
-
-      <Slide id="backend-libraries">
-        <Heading size={4}>node-core<br/> shared backend Libraries</Heading>
-        <List>
-          <ListItem>Shared cache</ListItem>
-          <ListItem>Backpressure</ListItem>
-          <ListItem>Circuit breaker</ListItem>
-        </List>
-      </Slide>
-
-      <Slide id="shared-cache-1">
-        <Heading size={4}>Shared cache</Heading>
-        <List>
-          <ListItem>Limit load on server</ListItem>
-          <ListItem>Reduce user latency</ListItem>
-          <ListItem>Leverage multi-level caching</ListItem>
-        </List>
-      </Slide>
-
-      <Slide id="shared-cache-2">
-        <Heading size={4}>Shared cache</Heading>
-        <Image width="75%" src="images/shared-cache.png" />
-      </Slide>
-
-      <Slide id="backpressure-1">
-        <Heading size={4}>Backpressure</Heading>
-        <List>
-          <ListItem>Limit amount of peak workload</ListItem>
-          <ListItem>Limit degradation of performance</ListItem>
-          <ListItem>Limit user impact</ListItem>
-        </List>
-      </Slide>
-
-      <Slide id="backpressure-2">
-        <Heading size={4}>Backpressure</Heading>
-        <Image src="images/backpressure.png" />
-      </Slide>
-
-      <Slide id="curcuit-breaker-1">
-        <Heading size={4}>Circuit Breaker</Heading>
-        <List>
-          <ListItem>Respond to downstream backpressure</ListItem>
-          <ListItem>Automatic downstream fallover</ListItem>
-          <ListItem>Limit load on downstream services</ListItem>
-        </List>
-      </Slide>
-
-      <Slide id="curcuit-breaker-2">
-        <Heading size={4}>Circuit Breaker</Heading>
-        <Image width="66%" src="images/curcuit-breaker.jpg" />
-      </Slide>
-
-      <Slide id="frontend-libraries">
-        <Heading size={4}>Frontend Libraries</Heading>
-        <List>
-          <ListItem>Visual Components</ListItem>
-          <ListItem>Internal Services Clients</ListItem>
-          <ListItem>Browser API Wrappers</ListItem>
-        </List>
-      </Slide>
-
-      <Slide id="shared-libraries-1">
-        <Heading size={4}>saddlebag<br/> shared frontend libraries</Heading>
-        <List>
-          <ListItem>Internal Services Clients</ListItem>
-          <ListItem>Browser API Wrappers</ListItem>
+          <ListItem>Full-stack components</ListItem>
+          <ListItem>Bootstrapping microsites</ListItem>
+          <ListItem>Routing</ListItem>
         </List>
       </Slide>
 
@@ -395,7 +214,7 @@ export default () => (
           <ListItem>Consistent</ListItem>
           <ListItem>Resusable</ListItem>
           <ListItem>Easy to upgrade</ListItem>
-          <ListItem>Easy to get things done</ListItem>
+          <ListItem>Easy to prototype</ListItem>
         </List>
       </Slide>
 
@@ -420,8 +239,8 @@ export default () => (
         </List>
       </Slide>
 
-      <Slide id="fullstack-dev">
-        <Image width="66%" src="images/tweet-fullstack-dev.png" />
+      <Slide id="widgets">
+        <Image src="images/widgets.jpg" />
       </Slide>
 
       <Slide id="oc-3">
@@ -434,6 +253,11 @@ export default () => (
         <Image width="50%" src="images/day-view.png" />
       </Slide>
 
+      <Slide id="day-view-code">
+        <Heading size={4}>Composing the results page</Heading>
+        <CodePane lang="js" theme="external" source={dayViewCode} />
+      </Slide>
+
       <Slide id="alternatives">
         <Heading size={4}>Alternatives to Open Components</Heading>
         <List>
@@ -443,77 +267,39 @@ export default () => (
         </List>
       </Slide>
 
-      <Slide id="state-management">
-        <Heading size={4}>State management</Heading>
-        <Text>
-          With mulitple full-stack components on a page, keeping a clean and sane
-          state can become tricky
-        </Text>
+      <Slide id="goldberg">
+        <Image src="images/goldberg.jpg" />
       </Slide>
 
-      <Slide id="event-buses">
-        <Heading size={4}>Event buses</Heading>
-        <Image width="75%" src="images/oc-event-bus.png" />
-      </Slide>
-
-      <Slide id="event-buses-2">
-        <Heading size={4}>Event buses cons</Heading>
+      <Slide id="project-bootstrap">
+        <Heading size={4}>Bootstrapping</Heading>
         <List>
-          <ListItem>Does not support Async events</ListItem>
-          <ListItem>Unmanaged interactions between components</ListItem>
-          <ListItem>Hard to track and test events</ListItem>
+          <ListItem>create-react-app + backpack</ListItem>
+          <ListItem>express + OC + SSR</ListItem>
+          <ListItem>CI + CD</ListItem>
         </List>
       </Slide>
 
-      <Slide id="redux-1">
-        <Heading size={4}>Redux</Heading>
-        <Image width="75%" src="images/oc-redux.png" />
-      </Slide>
-
-      <Slide id="redux-2">
-          <Heading size={4}>Redux cons</Heading>
-          <List>
-            <ListItem>Boilerplate codes and more complex interface</ListItem>
-            <ListItem>Store can become too large and slow</ListItem>
-            <ListItem>Not every piece of data needs to to be globally available</ListItem>
-          </List>
-      </Slide>
-
-      <Slide id="one-tree">
-        <Heading size={4}>One Application Tree</Heading>
-        <Text>
-          By rendering all components (local and full-stack)
-          in the same tree, we maintain control over props and state
-        </Text>
-      </Slide>
-
-      <Slide id="one-tree-benefits">
-        <Heading size={4}>One Application Tree</Heading>
+      <Slide id="project-bootstrap-2">
+        <Heading size={4}>Bootstrapping</Heading>
         <List>
-          <ListItem>Top-down control over rendering</ListItem>
-          <ListItem>Communication between components handled by micro-site</ListItem>
-          <ListItem>Components are both decoupled from and integrated</ListItem>
+          <ListItem>Fast prototyping</ListItem>
+          <ListItem>Production ready out of the box</ListItem>
+          <ListItem>Common structure and best practices</ListItem>
         </List>
       </Slide>
 
-      <Slide id="ums-1">
-        <Heading size={4}>URL management</Heading>
-        <List>
-          <ListItem>URL construction</ListItem>
-          <ListItem>URL validation</ListItem>
-          <ListItem>Best page for parameters</ListItem>
-          <ListItem>Parameter localization</ListItem>
-          <ListItem>Static declaration</ListItem>
-          <ListItem>Dynamic configuration</ListItem>
-        </List>
+      <Slide id="request-handler-1">
+        <Heading size={4}>Micro-sites routing</Heading>
+        <Image width="66%" src="images/request-handler.png" />
       </Slide>
 
-      <Slide id="spa-1">
-        <Heading size={4}>Going SPA ...again</Heading>
+      <Slide id="request-handler-2">
+        <Heading size={4}>Request handler</Heading>
         <List>
-          <ListItem>Single build reduces overall site weight</ListItem>
-          <ListItem>Client-side routing - no document response</ListItem>
-          <ListItem>Want to be able to make cross-cutting change quickly</ListItem>
+          <ListItem>handles every single request</ListItem>
+          <ListItem>needs to be super fast and reliable</ListItem>
+          <ListItem>top level routing only, no complicated logic</ListItem>
         </List>
       </Slide>
 
@@ -553,25 +339,9 @@ export default () => (
         <Image src="images/office.jpg" />
       </Slide>
 
-      <Slide id="goldberg">
-        <Heading size={4}>Extra tooling required</Heading>
-        <Image src="images/goldberg.jpg" />
-      </Slide>
-
       <Slide id="developit">
         <Heading size={4}>Fragmentation</Heading>
         <Image width="66%" src="images/tweet-macro-frontends.png" />
-      </Slide>
-
-      <Slide id="web-eng-guild">
-        <Heading size={4}>Web Engineering Guild</Heading>
-        <Text>the consil of elders</Text>
-        <List>
-          <ListItem>Biweekly lean coffee meetings</ListItem>
-          <ListItem>Sharing learnings</ListItem>
-          <ListItem>Solving problems</ListItem>
-          <ListItem>Building a shared foundation</ListItem>
-        </List>
       </Slide>
 
       <Slide id="conway-quote-2">
@@ -581,23 +351,224 @@ export default () => (
         </BlockQuote>
       </Slide>
 
-      <Slide id="links">
-        <Heading size={4}>Useful links</Heading>
-        <List>
-          <ListItem><Link href="https://micro-frontends.org/">Micro Frontends</Link></ListItem>
-          <ListItem><Link href="https://martinfowler.com/articles/micro-frontends.html">A Martin Fowler Article about Microfrontends</Link></ListItem>
-          <ListItem><Link href="https://developers.google.com/web/fundamentals/performance/prpl-pattern/">The PRPL Pattern</Link></ListItem>
-          <ListItem><Link href="https://medium.com/@areai51/microfrontends-an-approach-to-building-scalable-web-apps-e8678e2acdd6">An approach to building Scalable Web Apps</Link></ListItem>
-          <ListItem><Link href="https://speakerdeck.com/naltatis/micro-frontends-building-a-modern-webapp-with-multiple-teams?">Building a modern webapp with multiple teams</Link></ListItem>
-          <ListItem><Link href="https://twitter.com/JohnnoNolan/status/1139772147033726976">A twitter thread about Micro frontends</Link></ListItem>
-          <ListItem><Link href="https://www.youtube.com/watch?v=Kphwg2IsJfA">Wilson Mendes: Micro Frontend</Link></ListItem>
-          <ListItem><Link href="https://www.youtube.com/watch?v=gjtFGx0yX5M">Jimmy Bogard: Compositional UIs</Link></ListItem>
-        </List>
+      <Slide id="no-demo">
+        <Image width="40%" src="images/no-demo.jpg" />
       </Slide>
 
       <Slide id="thank-you">
         <Heading>Thank you!</Heading>
-        <Heading>Questions?</Heading>
+        <Heading fit>Enjoy your beer...js!</Heading>
       </Slide>
     </Deck>
   );
+
+  const extraSlides = (
+    <div>
+    <Slide id="atomic_design">
+      <Heading size={4}>Atomic Design</Heading>
+      <List>
+       <ListItem>
+         Methodology for creating design systems<br/>
+         <span style={{ fontSize: 'smaller', fontStyle:'italic'}}> (as opposed to ad-hoc collections of web pages)</span>
+       </ListItem><hr/>
+       <ListItem>An equal partnership between design and engineering</ListItem>
+      </List>
+    </Slide>
+
+    <Slide id="atomic-design-concepts">
+      <Heading size={4}>Atomic Design: Concepts</Heading>
+      <Layout>
+        <div className="atomic-design-image">
+          <Image src="images/atomic-design-tokens.png" />
+          <span>Tokens</span>
+        </div>
+        <div className="atomic-design-image">
+          <Image src="images/atomic-design-atoms.png" />
+          <span>Atoms</span>
+        </div>
+        <div className="atomic-design-image">
+          <Image src="images/atomic-design-molecules.png" />
+          <span>Molecules</span>
+        </div>
+      </Layout>
+      <Layout>
+        <div className="atomic-design-image">
+          <Image src="images/atomic-design-organisms.png" />
+          <span>Organisms</span>
+        </div>
+        <div className="atomic-design-image">
+          <Image src="images/atomic-design-systems.png" />
+          <span>Systems</span>
+        </div>
+      </Layout>
+    </Slide>
+
+    <Slide id="atomic-design-principles">
+      <Heading size={4}>Atomic Design: Principles</Heading>
+      <List>
+        <ListItem>Composability</ListItem>
+        <ListItem>Reusability</ListItem>
+        <ListItem>Consistency</ListItem>
+        <ListItem>Maintainability</ListItem>
+      </List>
+    </Slide>
+
+    <Slide id="the-goods-quote">
+      <Image width="50%" src="images/tweet-best-practices.png" />
+    </Slide>
+
+    <Slide id="green-blue-deployment">
+      <Heading size={4}>Green Blue Deployment</Heading>
+      <Image src="images/bluegreen2.png" />
+    </Slide>
+
+    <Slide id="k8s-autoscaling">
+      <Heading size={4}>Autoscaling magic</Heading>
+      <Image src="images/kubernetes.png" />
+    </Slide>
+    <Slide id="backend-libraries">
+      <Heading size={4}>node-core<br/> shared backend Libraries</Heading>
+      <List>
+        <ListItem>Shared cache</ListItem>
+        <ListItem>Backpressure</ListItem>
+        <ListItem>Circuit breaker</ListItem>
+      </List>
+    </Slide>
+
+    <Slide id="shared-cache-1">
+      <Heading size={4}>Shared cache</Heading>
+      <List>
+        <ListItem>Limit load on server</ListItem>
+        <ListItem>Reduce user latency</ListItem>
+        <ListItem>Leverage multi-level caching</ListItem>
+      </List>
+    </Slide>
+
+    <Slide id="shared-cache-2">
+      <Heading size={4}>Shared cache</Heading>
+      <Image width="75%" src="images/shared-cache.png" />
+    </Slide>
+
+    <Slide id="backpressure-1">
+      <Heading size={4}>Backpressure</Heading>
+      <List>
+        <ListItem>Limit amount of peak workload</ListItem>
+        <ListItem>Limit degradation of performance</ListItem>
+        <ListItem>Limit user impact</ListItem>
+      </List>
+    </Slide>
+
+    <Slide id="backpressure-2">
+      <Heading size={4}>Backpressure</Heading>
+      <Image src="images/backpressure.png" />
+    </Slide>
+
+    <Slide id="curcuit-breaker-1">
+      <Heading size={4}>Circuit Breaker</Heading>
+      <List>
+        <ListItem>Respond to downstream backpressure</ListItem>
+        <ListItem>Automatic downstream fallover</ListItem>
+        <ListItem>Limit load on downstream services</ListItem>
+      </List>
+    </Slide>
+
+    <Slide id="curcuit-breaker-2">
+      <Heading size={4}>Circuit Breaker</Heading>
+      <Image width="66%" src="images/curcuit-breaker.jpg" />
+    </Slide>
+
+    <Slide id="frontend-libraries">
+      <Heading size={4}>Frontend Libraries</Heading>
+      <List>
+        <ListItem>Visual Components</ListItem>
+        <ListItem>Internal Services Clients</ListItem>
+        <ListItem>Browser API Wrappers</ListItem>
+      </List>
+    </Slide>
+
+    <Slide id="shared-libraries-1">
+      <Heading size={4}>saddlebag<br/> shared frontend libraries</Heading>
+      <List>
+        <ListItem>Internal Services Clients</ListItem>
+        <ListItem>Browser API Wrappers</ListItem>
+      </List>
+    </Slide>
+
+
+    <Slide id="state-management">
+      <Heading size={4}>State management</Heading>
+      <Text>
+        With mulitple full-stack components on a page, keeping a clean and sane
+        state can become tricky
+      </Text>
+    </Slide>
+
+    <Slide id="event-buses">
+      <Heading size={4}>Event buses</Heading>
+      <Image width="75%" src="images/oc-event-bus.png" />
+    </Slide>
+
+    <Slide id="event-buses-2">
+      <Heading size={4}>Event buses cons</Heading>
+      <List>
+        <ListItem>Does not support Async events</ListItem>
+        <ListItem>Unmanaged interactions between components</ListItem>
+        <ListItem>Hard to track and test events</ListItem>
+      </List>
+    </Slide>
+
+    <Slide id="redux-1">
+      <Heading size={4}>Redux</Heading>
+      <Image width="75%" src="images/oc-redux.png" />
+    </Slide>
+
+    <Slide id="redux-2">
+        <Heading size={4}>Redux cons</Heading>
+        <List>
+          <ListItem>Boilerplate codes and more complex interface</ListItem>
+          <ListItem>Store can become too large and slow</ListItem>
+          <ListItem>Not every piece of data needs to to be globally available</ListItem>
+        </List>
+    </Slide>
+
+    <Slide id="one-tree">
+      <Heading size={4}>One Application Tree</Heading>
+      <Text>
+        By rendering all components (local and full-stack)
+        in the same tree, we maintain control over props and state
+      </Text>
+    </Slide>
+
+    <Slide id="one-tree-benefits">
+      <Heading size={4}>One Application Tree</Heading>
+      <List>
+        <ListItem>Top-down control over rendering</ListItem>
+        <ListItem>Communication between components handled by micro-site</ListItem>
+        <ListItem>Components are both decoupled from and integrated</ListItem>
+      </List>
+    </Slide>
+
+    <Slide id="ums-1">
+      <Heading size={4}>URL management</Heading>
+      <List>
+        <ListItem>URL construction</ListItem>
+        <ListItem>URL validation</ListItem>
+        <ListItem>Best page for parameters</ListItem>
+        <ListItem>Parameter localization</ListItem>
+        <ListItem>Static declaration</ListItem>
+        <ListItem>Dynamic configuration</ListItem>
+      </List>
+    </Slide>
+
+    <Slide id="web-eng-guild">
+      <Heading size={4}>Web Engineering Guild</Heading>
+      <Text>the consil of elders</Text>
+      <List>
+        <ListItem>Biweekly lean coffee meetings</ListItem>
+        <ListItem>Sharing learnings</ListItem>
+        <ListItem>Solving problems</ListItem>
+        <ListItem>Building a shared foundation</ListItem>
+      </List>
+    </Slide>
+  </div>
+);

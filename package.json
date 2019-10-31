@@ -1,5 +1,6 @@
 {
   "name": "micro-frontends",
+  "homepage": "https://debel.github.io/micro-frontends/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
